@@ -59,12 +59,24 @@ class StudentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = Student.find(params[:id])
-    end
+  def set_student
+    @student = Student.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def student_params
-      params.require(:student).permit(:first_name, :last_name, :school_email, :major, :expected_graduation_date)
-    end
+  def student_params
+    params.require(:student).permit(:first_name, :last_name, :school_email, :major, :expected_graduation_date, :profile_picture)
+  end
+
+  # # GET /students or /students.json
+  # def index
+  #   @search_params = params[:search] || {}
+  #   @students = Student.all
+  #
+  #   if @search_params[:major].present?
+  #     @students = @students.where(major: @search_params[:major])
+  #   end
+  #
+  # end
+
 end
