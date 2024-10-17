@@ -2,9 +2,23 @@ class StudentsController < ApplicationController
   before_action :set_student, only: %i[ show edit update destroy ]
 
   # GET /students or /students.json
+  # GET /students or /students.json
+  # GET /students or /students.json
   def index
+    Rails.logger.info "Params: #{params.inspect}"
+
+    @search_params = params[:search] || {}
     @students = Student.all
+
+    Rails.logger.info "Search Params: #{@search_params.inspect}"
+
+    if @search_params[:major].present?
+      @students = @students.where(major: @search_params[:major])
+    end
+
   end
+
+
 
   # GET /students/1 or /students/1.json
   def show
@@ -67,16 +81,5 @@ class StudentsController < ApplicationController
   def student_params
     params.require(:student).permit(:first_name, :last_name, :school_email, :major, :expected_graduation_date, :profile_picture)
   end
-
-  # # GET /students or /students.json
-  # def index
-  #   @search_params = params[:search] || {}
-  #   @students = Student.all
-  #
-  #   if @search_params[:major].present?
-  #     @students = @students.where(major: @search_params[:major])
-  #   end
-  #
-  # end
 
 end
