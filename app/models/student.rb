@@ -11,7 +11,7 @@ class Student < ApplicationRecord
   # validates :school_email, presence: true
   # validates :school_email, uniqueness: true
   has_one_attached :profile_picture
-  # validate :school_email_format
+  validate :email_format
 
   validate :email_format
   def email_format
