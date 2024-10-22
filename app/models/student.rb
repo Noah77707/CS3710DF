@@ -4,16 +4,16 @@ class Student < ApplicationRecord
   validates :last_name, presence: true
   validates :major, presence: true
   validates :expected_graduation_date, presence: true
-  validates :school_email, presence: true
-  validates :school_email, uniqueness: true
+  # validates :school_email, presence: true
+  # validates :school_email, uniqueness: true
   has_one_attached :profile_picture
-  validate :school_email_format
+  # validate :school_email_format
 
-  def school_email_format
-    unless school_email =~ /\A[\w+\-.]+@msudenver\.edu\z/i
-      errors.add(:school_email, "must be an @msudenver.edu email address")
-    end
-  end
+  # def school_email_format
+  #   unless school_email =~ /\A[\w+\-.]+@msudenver\.edu\z/i
+  #     errors.add(:school_email, "must be an @msudenver.edu email address")
+  #   end
+  # end
 
   def acceptable_image
     return unless profile_picture.attached?
