@@ -1,4 +1,8 @@
 class Student < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -9,11 +13,13 @@ class Student < ApplicationRecord
   has_one_attached :profile_picture
   # validate :school_email_format
 
-  # def school_email_format
-  #   unless school_email =~ /\A[\w+\-.]+@msudenver\.edu\z/i
-  #     errors.add(:school_email, "must be an @msudenver.edu email address")
-  #   end
-  # end
+  validate :email_format
+  def email_format
+    unless email =~ /\A[\w+\-.]+@msudenver\.edu\z/i
+      errors.add(:email, "must be an @msudenver.edu email address")
+    end
+  end
+
 
   def acceptable_image
     return unless profile_picture.attached?
