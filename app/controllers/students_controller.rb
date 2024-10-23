@@ -10,15 +10,25 @@ class StudentsController < ApplicationController
     @search_params = params[:search] || {}
     @students = Student.all
 
-    Rails.logger.info "Search Params: #{@search_params.inspect}"
+    # If there are no search parameters, initialize @students to an empty array
+    if @search_params.empty?
+      @students = Student.none
+    else
+      Rails.logger.info "Search Params: #{@search_params.inspect}"
 
-    if @search_params[:major].present?
-      @students = @students.where(major: @search_params[:major])
+      # Filter by major if present
+      if @search_params[:major].present?
+        @students = @students.where(major: @search_params[:major])
+      end
+
+      # Filter by graduation date if present
+      if @search_params[:graduation_date].present?
+        # Ensure the date is properly formatted and handled as a Date
+        formatted_date = Date.parse(@search_params[:graduation_date]) rescue nil
+        @students = @students.where(graduation_date: formatted_date) if formatted_date
+      end
     end
-
   end
-
-
 
   # GET /students/1 or /students/1.json
   def show
