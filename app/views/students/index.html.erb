@@ -1,11 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Students</h1>
+<div class="page-header">
+  <h1>Students</h1>
+</div>
 
 <%= render 'search_form', search_params: @search_params %>
 
 <div id="students">
   <% @students.each do |student| %>
-    <%= render student %>
+    <%= render('student_row', student: student) %>
   <% end %>
 </div>
+

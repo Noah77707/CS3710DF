@@ -1,0 +1,40 @@
+
+<div id="<%= dom_id student %>" class="row">
+
+  <div class="col-md-2">
+    <p>
+      <strong>First name:</strong><br>
+      <%= student.first_name %>
+    </p>
+  </div>
+
+  <div class="col-md-2">
+    <p>
+      <strong>Last name:</strong><br>
+      <%= student.last_name %>
+    </p>
+  </div>
+
+  <div class="col-md-2">
+    <p>
+      <strong>Major:</strong><br>
+      <%= student.major %>
+    </p>
+  </div>
+
+  <div class="col-md-2">
+    <p>
+      <strong>Expected graduation date:</strong><br>
+      <%= student.expected_graduation_date %>
+    </p>
+  </div>
+
+  <div class="col-md-2">
+    <strong>Actions:</strong><br>
+    <div class="btn-group" role="group" aria-label="Student actions">
+      <%= link_to "Show", student, method: :get, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_student_path(student), class: "btn btn-warning" %>
+      <%= link_to "Delete", student, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

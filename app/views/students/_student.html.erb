@@ -1,76 +1,35 @@
-<!--<div id="<%#= dom_id student %>">-->
-<!--  <p>-->
-<!--    <strong>First name:</strong>-->
-    <%#= student.first_name %>
-<!--  </p>-->
+<div id="<%= dom_id student %>">
+  <p>
+    <strong>First name:</strong>
+    <%= student.first_name %>
+  </p>
 
-<!--  <p>-->
-<!--    <strong>Last name:</strong>-->
-    <%#= student.last_name %>
-<!--  </p>-->
+  <p>
+    <strong>Last name:</strong>
+    <%= student.last_name %>
+  </p>
 
-<!--  <p>-->
-<!--    <strong>School email:</strong>-->
-    <%#= student.school_email %>
-<!--  </p>-->
+  <p>
+    <strong>School email:</strong>
+    <%= student.school_email %>
+  </p>
 
-<!--  <p>-->
-<!--    <strong>Major:</strong>-->
-    <%#= student.major %>
-<!--  </p>-->
+  <p>
+    <strong>Major:</strong>
+    <%= student.major %>
+  </p>
 
-<!--  <p>-->
-<!--    <strong>Expected graduation date:</strong>-->
-    <%#= student.expected_graduation_date %>
-<!--  </p>-->
+  <p>
+    <strong>Expected graduation date:</strong>
+    <%= student.expected_graduation_date %>
+  </p>
 
-<!--  <p>-->
-    <%# if student.profile_picture.attached? %>
-      <%#= image_tag student.profile_picture.variant(resize_to_limit: [150, nil])%>
-    <%# else %>
-      <%#= image_tag 'default-profile-picture.jpg', size: "150x150" %>
-    <%# end %>
-<!--  </p>-->
+  <p>
+    <% if student.profile_picture.attached? %>
+      <%= image_tag student.profile_picture.variant(resize_to_limit: [150, nil])%>
+    <% else %>
+      <%= image_tag 'default-profile-picture.jpg', size: "150x150" %>
+    <% end %>
+  </p>
 
-<!--</div>-->
-
-
-<div id="<%= dom_id student %>" class="row">
-
-  <div class="col-md-2">
-    <p>
-      <strong>First name:</strong><br>
-      <%= student.first_name %>
-    </p>
-  </div>
-
-  <div class="col-md-2">
-    <p>
-      <strong>Last name:</strong><br>
-      <%= student.last_name %>
-    </p>
-  </div>
-
-  <div class="col-md-2">
-    <p>
-      <strong>Major:</strong><br>
-      <%= student.major %>
-    </p>
-  </div>
-
-  <div class="col-md-2">
-    <p>
-      <strong>Expected graduation date:</strong><br>
-      <%= student.expected_graduation_date %>
-    </p>
-  </div>
-
-  <div class="col-md-2">
-    <strong>Actions:</strong><br>
-    <div class="btn-group" role="group" aria-label="Student actions">
-      <%= link_to "Show", student, method: :get, class: "btn btn-primary" %>
-      <%= link_to "Edit", edit_student_path(student), class: "btn btn-warning" %>
-      <%= link_to "Delete", student, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-    </div>
-  </div>
 </div>

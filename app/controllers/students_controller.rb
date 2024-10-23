@@ -17,15 +17,20 @@ class StudentsController < ApplicationController
       Rails.logger.info "Search Params: #{@search_params.inspect}"
 
       # Filter by major if present
+
       if @search_params[:major].present?
         @students = @students.where(major: @search_params[:major])
       end
 
-      # Filter by graduation date if present
-      if @search_params[:graduation_date].present?
-        # Ensure the date is properly formatted and handled as a Date
-        formatted_date = Date.parse(@search_params[:graduation_date]) rescue nil
-        @students = @students.where(graduation_date: formatted_date) if formatted_date
+      if @search_params[:expected_graduation_date].present? && @search_params[:date_condition].present?
+        selected_date = Date.parse(@search_params[:expected_graduation_date])
+
+        case @search_params[:date_condition]
+        when 'before'
+          @students = @students.where('expected_graduation_date < ?', selected_date)
+        when 'after'
+          @students = @students.where('expected_graduation_date > ?', selected_date)
+        end
       end
     end
   end

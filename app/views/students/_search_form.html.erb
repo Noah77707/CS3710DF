@@ -5,8 +5,13 @@
   </div>
 
   <div class="form-group mr-3">
-    <%= form.label :graduation_date, "Select Graduation Date", class: "form-label" %>
-    <%= form.text_field :graduation_date, class: "form-control", placeholder: "mm-dd-yyyy", type: "date" %>
+    <%= form.label :date_condition, "Search For:", class: "form-label" %>
+    <%= form.select :date_condition, options_for_select([['Before', 'before'], ['After', 'after']]), { prompt: 'Select Condition' }, name: 'search[date_condition]', class: "form-control" %>
+  </div>
+
+  <div class="form-group mr-3">
+    <%= form.label :expected_graduation_date, "Select Expected Graduation Date", class: "form-label" %>
+    <%= form.date_field :expected_graduation_date, name: 'search[expected_graduation_date]', class: "form-control" %>
   </div>
 
   <div class="form-group mr-3">
@@ -14,6 +19,6 @@
   </div>
 
   <div class="form-group">
-    <%= form.submit "Search All", class: "btn btn-secondary" %>
+    <%= link_to "Search All", students_path(search: { major: '' }), class: "btn btn-secondary" %>
   </div>
 <% end %>
