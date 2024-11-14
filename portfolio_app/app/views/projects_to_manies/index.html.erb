@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Projects</h1>
+
+<div id="projects">
+  <% @projects_to_manies.each do |projects_to_many| %>
+    <%= render 'projects_to_many', projects_to_many: projects_to_many%>
+    <p>
+      <%= link_to "Show this project", student_projects_to_many_path(@student, projects_to_many) %> |
+      <%= link_to "Edit this project", edit_student_projects_to_many_path(@student, projects_to_many) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New project", new_student_projects_to_many_path(@student) %>
+<%= link_to "Back to student", student_path(@student) %>

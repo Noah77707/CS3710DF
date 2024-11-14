@@ -1,0 +1,26 @@
+<%= form_with(model: [@student, @projects_to_many]) do |form| %>
+  <% if @projects_to_many.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@projects_to_many.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <ul>
+        <% @projects_to_many.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.submit "Save Project" %>
+  </div>
+<% end %>
