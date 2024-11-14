@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @portfolio_one_to_many %>
+
+<div>
+  <%= link_to "Edit this portfolio one to many", edit_portfolio_one_to_many_path(@portfolio_one_to_many) %> |
+  <%= link_to "Back to portfolio one to manies", portfolio_one_to_manies_path %>
+
+  <%= button_to "Destroy this portfolio one to many", @portfolio_one_to_many, method: :delete %>
+</div>

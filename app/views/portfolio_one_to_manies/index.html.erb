@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Portfolio one to manies</h1>
+
+<div id="portfolio_one_to_manies">
+  <% @portfolio_one_to_manies.each do |portfolio_one_to_many| %>
+    <%= render portfolio_one_to_many %>
+    <p>
+      <%= link_to "Show this portfolio one to many", portfolio_one_to_many %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New portfolio one to many", new_portfolio_one_to_many_path %>

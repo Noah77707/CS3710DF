@@ -30,12 +30,15 @@
   </p>
 
   <% if @student.portfolio %>
-  <p><strong>Preferred Email:</strong> <%= @student.portfolio.preferred_email %></p>
-  <p><strong>Active:</strong> <%= @student.portfolio.active ? 'Yes' : 'No' %></p>
-  <p><strong>Summary:</strong> <%= @student.portfolio.summary %></p>
-  <p><strong>Skills:</strong> <%= @student.portfolio.skills %></p>
+  <p><strong>Preferred Email:</strong> <%= @student.portfolio.first.preferred_email %></p>
+  <p><strong>Active:</strong> <%= @student.portfolio.first.active ? 'Yes' : 'No' %></p>
+  <p><strong>Summary:</strong> <%= @student.portfolio.first.summary %></p>
+  <p><strong>Skills:</strong> <%= @student.portfolio.first.skills %></p>
 <% else %>
   <p>No portfolio information available.</p>
 <% end %>
+
+  <%= link_to 'View projects', student_projects_to_manies_path(@student) %>
+  <%= link_to 'Add New Project', student_projects_to_manies_path(@student) %>
 
 </div>
